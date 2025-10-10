@@ -43,8 +43,6 @@ const videoRef = useRef(null);
 
     if (!videoEl || !videoEntityEl) return;
 
-    alert(videoEl.duration)
-
     const handleTargetFound = () => {
       videoEl.play();
     };
@@ -59,6 +57,10 @@ const videoRef = useRef(null);
     window.addEventListener("click", handleUserInteraction);
     videoEntityEl.addEventListener("targetFound", handleTargetFound);
     videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
+
+    videoEl.addEventListener('loadedmetadata', () =>{
+      alert('Video duration:', videoEl.duration, 'seconds');
+    })
 
     return () => {
       videoEntityEl.removeEventListener("targetFound", handleTargetFound);
@@ -93,7 +95,6 @@ const videoRef = useRef(null);
             loop
             muted
             crossOrigin="anonymous"
-            // ref={videoRef}
           ></video>
         </a-assets>
 
