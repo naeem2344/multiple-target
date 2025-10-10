@@ -21,7 +21,8 @@ const Home = () => {
     <div className='target__image__container'>
       <div className='target__image__sub__container'>
         <img src='/assets/target-image.jpg' height={400} width={600} alt='multiple-target-image' />
-        <QRCodeSVG value={'https://multiple-target-pnur.vercel.app/landing'} size={200} />
+        {/* <QRCodeSVG value={'https://multiple-target-pnur.vercel.app/landing'} size={200} /> */}
+        <QRCodeSVG value={'https://target-a2ic.vercel.app/target-image'} size={200} />
       </div>
     </div>
   )
