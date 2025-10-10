@@ -1,10 +1,13 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
+import ModalPopUp from '../components/Modal';
 const TargetImage = lazy(() => import('../components/TargetImage'));
 
 const ShowTarget = () => {
+  const [isAboutToEnd,setIsAboutToEnd] = useState(false);
   return (
     <Suspense fallback={<><p>Loading....</p></>}>
-      <TargetImage />
+      <ModalPopUp open={isAboutToEnd} setAboutEnd={setIsAboutToEnd}/>
+      <TargetImage setAboutEnd={setIsAboutToEnd}/>
     </Suspense>
   )
 }

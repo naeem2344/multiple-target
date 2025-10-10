@@ -19,7 +19,7 @@ if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
   });
 }
 
-const TargetImage = () => {
+const TargetImage = ({ setAboutEnd }) => {
   const videoRef = useRef(null);
   const videoEntityRef = useRef(null);
   const [targetVideo, setTargetVideo] = useState();
@@ -65,13 +65,18 @@ const TargetImage = () => {
     };
   }, []);
 
+
+
+
+  
+
   useEffect(() => {
     const videoEl = videoRef.current;
     if (!videoEl) return;
 
     const handleTimeUpdate = () => {
-      if (videoEl.duration - videoEl.currentTime < 2) { // 2 seconds before end
-        alert("Video is about to end!", videoEl.duration - videoEl.currentTime);
+      if (videoEl.duration - videoEl.currentTime < 5) {
+        setAboutEnd(true);
         videoEl.removeEventListener("timeupdate", handleTimeUpdate);
       }
     };
