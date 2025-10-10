@@ -19,7 +19,7 @@ if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
   });
 }
 
-const TargetImage = ({ setAboutEnd }) => {
+const TargetImage = ({ setTargetDetacted }) => {
   const videoRef = useRef(null);
   const videoEntityRef = useRef(null);
   const [targetVideo, setTargetVideo] = useState();
@@ -45,6 +45,7 @@ const TargetImage = ({ setAboutEnd }) => {
 
     const handleTargetFound = () => {
       videoEl.play();
+      setTargetDetacted(true)
     };
 
     const handleUserInteraction = () => {
@@ -56,11 +57,17 @@ const TargetImage = ({ setAboutEnd }) => {
 
     window.addEventListener("click", handleUserInteraction);
     videoEntityEl.addEventListener("targetFound", handleTargetFound);
-    videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
+    videoEntityEl.addEventListener("targetLost", () => {
+      videoEl.pause()
+      setTargetDetacted(false)
+    });
 
     return () => {
       videoEntityEl.removeEventListener("targetFound", handleTargetFound);
-      videoEntityEl.removeEventListener("targetLost", () => videoEl.pause());
+      videoEntityEl.removeEventListener("targetLost", () => {
+        videoEl.pause()
+        setTargetDetacted(false)
+      });
       window.removeEventListener("click", handleUserInteraction);
     };
   }, []);
@@ -68,25 +75,25 @@ const TargetImage = ({ setAboutEnd }) => {
 
 
 
-  
 
-  useEffect(() => {
-    const videoEl = videoRef.current;
-    if (!videoEl) return;
 
-    const handleTimeUpdate = () => {
-      if (videoEl.duration - videoEl.currentTime < 5) {
-        setAboutEnd(true);
-        videoEl.removeEventListener("timeupdate", handleTimeUpdate);
-      }
-    };
+  // useEffect(() => {
+  //   const videoEl = videoRef.current;
+  //   if (!videoEl) return;
 
-    videoEl.addEventListener("timeupdate", handleTimeUpdate);
+  //   const handleTimeUpdate = () => {
+  //     if (videoEl.duration - videoEl.currentTime < 5) {
+  //       setLoginModal(true);
+  //       videoEl.removeEventListener("timeupdate", handleTimeUpdate);
+  //     }
+  //   };
 
-    return () => {
-      videoEl.removeEventListener("timeupdate", handleTimeUpdate);
-    };
-  }, [targetVideo]);
+  //   videoEl.addEventListener("timeupdate", handleTimeUpdate);
+
+  //   return () => {
+  //     videoEl.removeEventListener("timeupdate", handleTimeUpdate);
+  //   };
+  // }, [targetVideo]);
 
 
 
