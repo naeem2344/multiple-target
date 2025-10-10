@@ -1,6 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
+import { useParams } from "react-router-dom";
+import videos from "../content/videoData";
 
 
 if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
@@ -20,6 +22,21 @@ if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
 const ShowTarget = () => {
   const videoRef = useRef(null);
   const videoEntityRef = useRef(null);
+  const [targetVideo, setTargetVideo] = useState();
+  const { id } = useParams();
+
+
+  useEffect(() => {
+    if (!id) return;
+
+    if (videos) {
+      const { video } = videos[id]
+      setTargetVideo(video);
+    }
+  }, [id, videos])
+
+
+
   useEffect(() => {
     const videoEl = videoRef.current;
     const videoEntityEl = videoEntityRef.current;
@@ -31,7 +48,7 @@ const ShowTarget = () => {
     };
 
     const handleUserInteraction = () => {
-      if(!videoEl) return;
+      if (!videoEl) return;
       videoEl.muted = false;
       videoEl.play();
       window.removeEventListener("click", handleUserInteraction);
@@ -67,7 +84,8 @@ const ShowTarget = () => {
           <video
             id="myVideo"
             ref={videoRef}
-            src="/assets/videos/atal-bihari-vajpayee.mp4"
+            // src="/assets/videos/atal-bihari-vajpayee.mp4"
+            src={targetVideo}
             preload="auto"
             playsInline
             loop
