@@ -20,13 +20,12 @@ const ModalPopUp = ({ open, setLoginModal }) => {
         console.log(userNumber);
         setIsUserEnterNumber(!isUserEnterNumber)
         setIsValidateUser(true)
-        handleClose();
     };
 
     const handleCountinue = (event) => {
         event.preventDefault();
         console.log(userNumber);
-        localStorage.setItem('modal-key', 'countinue');
+        localStorage.setItem('modal-key', 'done');
         handleClose();
     }
 
@@ -38,7 +37,7 @@ const ModalPopUp = ({ open, setLoginModal }) => {
 
     return (
         <React.Fragment>
-            <Dialog open={open} sx={{ bgcolor: 'transparent' }}>
+            <Dialog open={true} sx={{ bgcolor: 'transparent' }}>
                 <DialogContent>
                     <DialogContentText sx={{ mb: 2 }}>
                         To subscribe to this offer, please enter your phone number or continue with your email address below. You’ll receive an exclusive discount upon subscribing.
