@@ -19,7 +19,7 @@ if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
   });
 }
 
-const TargetImage = ({ setTargetDetacted , targetDetected }) => {
+const TargetImage = ({ setTargetDetacted }) => {
   const videoRef = useRef(null);
   const videoEntityRef = useRef(null);
   const [targetVideo, setTargetVideo] = useState();
@@ -45,7 +45,7 @@ const TargetImage = ({ setTargetDetacted , targetDetected }) => {
 
     const handleTargetFound = () => {
       videoEl.play();
-      setTargetDetacted(!targetDetected)
+      setTargetDetacted(true)
     };
 
     const handleUserInteraction = () => {
@@ -59,14 +59,14 @@ const TargetImage = ({ setTargetDetacted , targetDetected }) => {
     videoEntityEl.addEventListener("targetFound", handleTargetFound);
     videoEntityEl.addEventListener("targetLost", () => {
       videoEl.pause()
-      setTargetDetacted(!targetDetected)
+      setTargetDetacted(false)
     });
 
     return () => {
       videoEntityEl.removeEventListener("targetFound", handleTargetFound);
       videoEntityEl.removeEventListener("targetLost", () => {
         videoEl.pause()
-        setTargetDetacted(!targetDetected)
+        setTargetDetacted(false)
       });
       window.removeEventListener("click", handleUserInteraction);
     };
