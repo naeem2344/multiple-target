@@ -1,6 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "aframe";
 import "mind-ar/dist/mindar-image-aframe.prod.js";
+import videos from "../content/videoData";
+import { useParams } from "react-router-dom";
 
 
 if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
@@ -18,20 +20,37 @@ if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
 }
 
 const TargetImage = () => {
-
-  const videoRef = useRef(null);
+const videoRef = useRef(null);
   const videoEntityRef = useRef(null);
+  const [targetVideo, setTargetVideo] = useState();
+  const { id } = useParams();
+
+
+  useEffect(() => {
+    if (!id) return;
+
+    if (videos) {
+      const { video } = videos[id]
+      setTargetVideo(video);
+    }
+  }, [id, videos])
+
+
+
   useEffect(() => {
     const videoEl = videoRef.current;
     const videoEntityEl = videoEntityRef.current;
 
     if (!videoEl || !videoEntityEl) return;
 
+    console.log(videoEl.duration)
+
     const handleTargetFound = () => {
       videoEl.play();
     };
 
     const handleUserInteraction = () => {
+      if (!videoEl) return;
       videoEl.muted = false;
       videoEl.play();
       window.removeEventListener("click", handleUserInteraction);
@@ -54,26 +73,27 @@ const TargetImage = () => {
     <div style={{ width: "100vw", height: "100vh", margin: 0, padding: 0, overflow: "hidden" }}>
       <a-scene
         fix-ios-webgl
-        mindar-image="imageTargetSrc: /assets/targets.mind; autoStart: true;"
+        mindar-image="imageTargetSrc: /targets.mind; autoStart: true;"
         embedded
         color-space="sRGB"
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false"
 
-        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+        style={{ width: "100vw", height: "100vh", position: "absolute", top: 0, left: 0 }}
       >
         <a-assets>
           <video
             id="myVideo"
             ref={videoRef}
-            src="/target-image/atal-bihari-vajpayee.mp4"
+            // src="/assets/videos/atal-bihari-vajpayee.mp4"
+            src={targetVideo}
             preload="auto"
             playsInline
             loop
             muted
             crossOrigin="anonymous"
-            style={{ height: '400px', border: '1px solid red' }}
+            // ref={videoRef}
           ></video>
         </a-assets>
 
