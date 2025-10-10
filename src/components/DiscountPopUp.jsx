@@ -8,9 +8,9 @@ import { Typography } from '@mui/material';
 const DiscountPopUp = ({open,setCouponModal}) => {
 
     const handleCountinue = () => {
-        setCouponModal(false);
         localStorage.setItem('discount-key', 'done');
         localStorage.clear();
+        setCouponModal(false);
     }
 
     return (

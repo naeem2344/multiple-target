@@ -10,33 +10,56 @@ const ShowTarget = () => {
   const modalKey = localStorage.getItem('modal-key');
   const discountKey = localStorage.getItem('discount-key');
 
+  // useEffect(() => {
+  //   let loginTime; 
+  //   let discountTime; 
+  //   // Initially for show login modal
+  //   if (targetDetected && (modalKey === 'countinue' || !modalKey)) {
+  //     // Show the login modal after 5sec and update the localStorage to countinue
+  //     loginTime = setTimeout(() => {
+  //       setLoginModal(true)
+  //       localStorage.setItem('modal-key', 'countinue');
+  //     }, 500)
+  //   }
+
+  //   // Show the modal of generate token and copy/save the token after 8 sec
+  //   if (targetDetected && modalKey === 'done' && (discountKey === 'countinue' || !discountKey)) {
+  //     // Show Show the discount modal after 8sec and update the localStorage to countinue
+  //     discountTime = setTimeout(() => {
+  //       setCouponModal(true);
+  //       localStorage.setItem('discount-key', 'countinue');
+  //     }, 800);
+  //   }
+
+
+  //   return () =>{
+  //     clearTimeout(loginTime)
+  //     clearTimeout(discountTime)
+  //   }
+  // }, [targetDetected]);
+
   useEffect(() => {
-    let loginTime; 
-    let discountTime; 
-    // Initially for show login modal
-    if (targetDetected && (modalKey === 'countinue' || !modalKey)) {
-      // Show the login modal after 5sec and update the localStorage to countinue
-      loginTime = setTimeout(() => {
-        setLoginModal(true)
-        localStorage.setItem('modal-key', 'countinue');
-      }, 500)
+    if (!targetDetected) return;
+
+    const modalShown = localStorage.getItem("modal-key");
+    const discountShown = localStorage.getItem("discount-key");
+
+    if (!modalShown) {
+      setTimeout(() => {
+        setLoginModal(true);
+        localStorage.setItem("modal-key", "done");
+      }, 1000);
     }
 
-    // Show the modal of generate token and copy/save the token after 8 sec
-    if (targetDetected && modalKey === 'done' && (discountKey === 'countinue' || !discountKey)) {
-      // Show Show the discount modal after 8sec and update the localStorage to countinue
-      discountTime = setTimeout(() => {
+    if (modalShown === "done" && !discountShown) {
+      setTimeout(() => {
         setCouponModal(true);
-        localStorage.setItem('discount-key', 'countinue');
-      }, 800);
+        localStorage.setItem("discount-key", "done");
+      }, 3000);
     }
 
-
-    return () =>{
-      clearTimeout(loginTime)
-      clearTimeout(discountTime)
-    }
   }, [targetDetected]);
+
 
 
   return (
