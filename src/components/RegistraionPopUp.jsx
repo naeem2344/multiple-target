@@ -37,7 +37,7 @@ const ModalPopUp = ({ open, setLoginModal }) => {
 
     return (
         <React.Fragment>
-            <Dialog open={true} sx={{ bgcolor: 'transparent' }}>
+            <Dialog open={open} sx={{ bgcolor: 'transparent' }}>
                 <DialogContent>
                     <DialogContentText sx={{ mb: 2 }}>
                         To subscribe to this offer, please enter your phone number or continue with your email address below. You’ll receive an exclusive discount upon subscribing.
