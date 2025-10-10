@@ -14,6 +14,11 @@ const ShowTarget = () => {
     let loginTime; 
     let discountTime; 
     // Initially for show login modal
+    alert(targetDetected)
+    alert(modalKey)
+    alert(loginModal)
+    alert(couponModal)
+   
     if (targetDetected && (modalKey === 'countinue' || !modalKey)) {
       // Show the login modal after 5sec and update the localStorage to countinue
       loginTime = setTimeout(() => {
@@ -21,7 +26,6 @@ const ShowTarget = () => {
         localStorage.setItem('modal-key', 'countinue');
       }, 500)
     }
-
     // Show the modal of generate token and copy/save the token after 8 sec
     if (targetDetected && modalKey === 'done' && (discountKey === 'countinue' || !discountKey)) {
       // Show Show the discount modal after 8sec and update the localStorage to countinue
