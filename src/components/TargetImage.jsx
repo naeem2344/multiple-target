@@ -20,7 +20,7 @@ if (typeof AFRAME !== "undefined" && !AFRAME.components["fix-ios-webgl"]) {
 }
 
 const TargetImage = () => {
-const videoRef = useRef(null);
+  const videoRef = useRef(null);
   const videoEntityRef = useRef(null);
   const [targetVideo, setTargetVideo] = useState();
   const { id } = useParams();
@@ -58,10 +58,6 @@ const videoRef = useRef(null);
     videoEntityEl.addEventListener("targetFound", handleTargetFound);
     videoEntityEl.addEventListener("targetLost", () => videoEl.pause());
 
-    videoEl.addEventListener('loadedmetadata', () =>{
-      alert('Video duration:', videoEl.duration, 'seconds');
-    })
-
     return () => {
       videoEntityEl.removeEventListener("targetFound", handleTargetFound);
       videoEntityEl.removeEventListener("targetLost", () => videoEl.pause());
@@ -69,7 +65,26 @@ const videoRef = useRef(null);
     };
   }, []);
 
-  
+  useEffect(() => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
+    const handleTimeUpdate = () => {
+      if (videoEl.duration - videoEl.currentTime < 2) { // 2 seconds before end
+        alert("Video is about to end!", videoEl.duration - videoEl.currentTime);
+        videoEl.removeEventListener("timeupdate", handleTimeUpdate);
+      }
+    };
+
+    videoEl.addEventListener("timeupdate", handleTimeUpdate);
+
+    return () => {
+      videoEl.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, [targetVideo]);
+
+
+
 
   return (
     <div style={{ width: "100vw", height: "100vh", margin: 0, padding: 0, overflow: "hidden" }}>
@@ -88,7 +103,6 @@ const videoRef = useRef(null);
           <video
             id="myVideo"
             ref={videoRef}
-            // src="/assets/videos/atal-bihari-vajpayee.mp4"
             src={targetVideo}
             preload="auto"
             playsInline
