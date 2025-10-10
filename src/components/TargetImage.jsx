@@ -43,7 +43,7 @@ const videoRef = useRef(null);
 
     if (!videoEl || !videoEntityEl) return;
 
-    console.log(videoEl.duration)
+    alert(videoEl.duration)
 
     const handleTargetFound = () => {
       videoEl.play();
