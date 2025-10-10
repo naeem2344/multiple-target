@@ -147,17 +147,6 @@ const ShowTarget = () => {
       videoEntityEl.removeEventListener("targetFound", handleTargetFound);
       videoEntityEl.removeEventListener("targetLost", handleTargetLost);
 
-      // // MindAR cleanup
-      // const sceneEl = document.querySelector("a-scene");
-      // if (sceneEl && sceneEl.systems && sceneEl.systems["mindar-image"]) {
-      //   try {
-      //     sceneEl.systems["mindar-image"].stop();
-      //     sceneEl.systems["mindar-image"].renderer?.dispose?.();
-      //   } catch (err) {
-      //     console.warn("MindAR cleanup warning:", err);
-      //   }
-      // }
-      // sceneEl?.parentNode?.removeChild(sceneEl);
     };
   }, []);
 
@@ -187,6 +176,7 @@ const ShowTarget = () => {
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        
 
         <a-video
           ref={videoEntityRef}
