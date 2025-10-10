@@ -8,10 +8,9 @@ const App = () => {
   return (
     <Suspense fallback={<p>Loading....</p>}>
       <Routes>
-        {/* <Route index element={<><Home /></>} /> */}
-        <Route index element={<ShowTarget />} />
+        <Route index element={<><Home /></>} />
         <Route path='/landing' element={<><Landing /></>} />
-        {/* <Route path="/show-content/:id" element={<ShowTarget />} /> */}
+        <Route path="/show-content/:id" element={<ShowTarget />} />
       </Routes>
     </Suspense>
   )
