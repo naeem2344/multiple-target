@@ -45,7 +45,7 @@ const TargetImage = ({ setTargetDetacted , targetDetected }) => {
 
     const handleTargetFound = () => {
       videoEl.play();
-      setTargetDetacted(!targetDetected)
+      setTargetDetacted(true)
     };
 
     const handleUserInteraction = () => {
@@ -59,18 +59,18 @@ const TargetImage = ({ setTargetDetacted , targetDetected }) => {
     videoEntityEl.addEventListener("targetFound", handleTargetFound);
     videoEntityEl.addEventListener("targetLost", () => {
       videoEl.pause()
-      setTargetDetacted(!targetDetected)
+      setTargetDetacted(false)
     });
 
     return () => {
       videoEntityEl.removeEventListener("targetFound", handleTargetFound);
       videoEntityEl.removeEventListener("targetLost", () => {
         videoEl.pause()
-        setTargetDetacted(!targetDetected)
+        setTargetDetacted(false)
       });
       window.removeEventListener("click", handleUserInteraction);
     };
-  }, []);
+  }, [targetDetected]);
 
 
 

@@ -12,12 +12,7 @@ const ShowTarget = () => {
 
   useEffect(() => {
     let loginTime; 
-    let discountTime; 
-    // Initially for show login modal
-    // alert(targetDetected)
-    // alert(modalKey)
-    // alert(loginModal)
-    // alert(couponModal)
+    let discountTime;
    
     if (targetDetected && (modalKey === 'countinue' || !modalKey)) {
       // Show the login modal after 5sec and update the localStorage to countinue
