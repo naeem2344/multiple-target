@@ -5,7 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { Typography } from '@mui/material';
 
-const DiscountPopUp = ({open,setCouponModal}) => {
+const DiscountPopUp = ({couponModal,setCouponModal}) => {
 
     const handleCountinue = () => {
         localStorage.setItem('discount-key', 'done');
@@ -15,7 +15,7 @@ const DiscountPopUp = ({open,setCouponModal}) => {
 
     return (
         <React.Fragment>
-            <Dialog open={open} sx={{ bgcolor: 'transparent' }}>
+            <Dialog open={couponModal} sx={{ bgcolor: 'transparent' }}>
                 <DialogContent>
                     <DialogContentText sx={{ mb: 2 }}>
                         🎉 Congratulations! You’ve unlocked your exclusive discount coupon — don’t miss out on your savings!

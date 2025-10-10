@@ -22,7 +22,6 @@ const ShowTarget = () => {
     if (targetDetected && (modalKey === 'countinue' || !modalKey)) {
       // Show the login modal after 5sec and update the localStorage to countinue
       loginTime = setTimeout(() => {
-        alert('detacted')
         setLoginModal(!loginModal)
         localStorage.setItem('modal-key', 'countinue');
       }, 500)
@@ -32,7 +31,6 @@ const ShowTarget = () => {
       // Show Show the discount modal after 8sec and update the localStorage to countinue
       discountTime = setTimeout(() => {
         setCouponModal(!couponModal);
-        alert("detact")
         localStorage.setItem('discount-key', 'countinue');
       }, 800);
     }
