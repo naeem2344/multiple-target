@@ -19,9 +19,6 @@ const ModalPopUp = ({ open, setAboutEnd }) => {
     };
     return (
         <React.Fragment >
-            <Button variant="outlined" onClick={handleClickOpen} style={{ zIndex: 9999 }}>
-                Open responsive dialog
-            </Button>
             <Dialog
                 fullScreen={fullScreen}
                 open={open}
