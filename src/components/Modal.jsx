@@ -20,6 +20,7 @@ const ModalPopUp = ({ open, setAboutEnd }) => {
     return (
         <React.Fragment >
             <Dialog
+                style={{zIndex:9999}}
                 fullScreen={fullScreen}
                 open={open}
                 onClose={handleClose}
