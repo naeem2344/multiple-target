@@ -40,7 +40,7 @@ const ShowTarget = () => {
       clearTimeout(loginTime)
       clearTimeout(discountTime)
     }
-  }, [targetDetected , loginModal , couponModal , setCouponModal , setLoginModal , setTargetDetacted , modalKey ,discountKey]);
+  }, [targetDetected ]);
 
 
   return (
