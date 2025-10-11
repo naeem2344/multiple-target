@@ -22,7 +22,8 @@ body {
     padding: 20px;
     border-radius: 12px;
 }
-.target__image__container .target__image__sub__container img{
+
+.target__image__container .target__image__sub__container img {
     margin-bottom: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -57,13 +58,13 @@ body {
     cursor: pointer;
 }
 
-.landing__page__container .landing__page__sub__container .landing__page__items img{
+.landing__page__container .landing__page__sub__container .landing__page__items img {
     /* border-radius: 12px; */
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
 
-.landing__page__container .landing__page__sub__container .landing__page__items p{
+.landing__page__container .landing__page__sub__container .landing__page__items p {
     text-align: center;
 }
 
@@ -123,7 +124,7 @@ body {
 }
 
 
-.qrcode__container{
+.qrcode__container {
     display: flex;
     justify-content: center;
     align-items: center;

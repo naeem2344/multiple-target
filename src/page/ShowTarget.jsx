@@ -1,4 +1,3 @@
-
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import ModalPopUp from '../components/RegistraionPopUp';
 import DiscountPopUp from '../components/DiscountPopUp';
@@ -13,7 +12,6 @@ const ShowTarget = () => {
 
   useEffect(() => {
     let loginTimer;
-    let discountTimer;
 
     if (targetDetected) {
       if (modalKey === 'countinue' || !modalKey) {
@@ -29,7 +27,6 @@ const ShowTarget = () => {
 
     return () => {
       clearTimeout(loginTimer);
-      clearTimeout(discountTimer);
     };
   }, [targetDetected, modalKey]);
 
@@ -46,21 +43,6 @@ const ShowTarget = () => {
 
     return () => clearTimeout(discountTimer);
   }, [targetDetected, discountKey]);
-
-
-  // useEffect(() => {
-  //   let discountTimer;
-  //   if (!targetDetected) return;
-
-  //   if (localStorage.getItem('modal-key') === 'done' && (!loginModal || loginModal === 'countinue' )) {
-  //     localStorage.setItem('discount-key', 'countinue')
-  //     discountTimer = setTimeout(() => {
-  //       setCouponModal(true);
-  //     }, 800);
-  //   }
-
-  //   return () => clearTimeout(discountTimer);
-  // }, [targetDetected, loginModal]);
 
   return (
     <Suspense fallback={<p>Loading....</p>}>
