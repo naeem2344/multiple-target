@@ -6,7 +6,7 @@ const TargetLessVideo = () => {
             <video 
                 className="responsive__video" 
                 controls 
-                poster="/assets/thumbnails/atal-bihari-vajpayee.jpg"
+                poster="/assets/dr-manmohan-singh.webp"
             >
                 <source src="/assets/videos/dr-manmohan-singh.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
