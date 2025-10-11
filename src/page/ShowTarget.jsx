@@ -11,9 +11,9 @@ const ShowTarget = () => {
   const discountKey = localStorage.getItem('discount-key');
 
   useEffect(() => {
-    let loginTime; 
+    let loginTime;
     let discountTime;
-   
+
     if (targetDetected && (modalKey === 'countinue' || !modalKey)) {
       // Show the login modal after 5sec and update the localStorage to countinue
       loginTime = setTimeout(() => {
@@ -31,11 +31,11 @@ const ShowTarget = () => {
     }
 
 
-    return () =>{
+    return () => {
       clearTimeout(loginTime)
       clearTimeout(discountTime)
     }
-  }, [targetDetected ]);
+  }, [targetDetected, modalKey, discountKey]);
 
 
   return (
