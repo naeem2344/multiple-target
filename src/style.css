@@ -74,7 +74,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 100vh;
     background: linear-gradient(135deg, #1e293b, #0f172a);
     padding: 20px;
 }
@@ -104,7 +104,7 @@ body {
 /* Mobile Optimization */
 @media (max-width: 768px) {
     .single__video__container {
-        height: auto;
+        /* height: auto; */
         padding: 40px 10px;
     }
 
