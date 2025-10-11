@@ -37,7 +37,7 @@ const ShowTarget = () => {
     let discountTimer;
     if (!targetDetected) return;
 
-    if (localStorage.getItem('modal-key') === 'done' && (!loginModal || loginModal === 'countinue' )) {
+    if (localStorage.getItem('modal-key') === 'done' && (!discountKey || discountKey === 'countinue' )) {
       localStorage.setItem('discount-key', 'countinue')
       discountTimer = setTimeout(() => {
         setCouponModal(true);
@@ -45,7 +45,22 @@ const ShowTarget = () => {
     }
 
     return () => clearTimeout(discountTimer);
-  }, [targetDetected, loginModal]);
+  }, [targetDetected, discountKey]);
+
+
+  // useEffect(() => {
+  //   let discountTimer;
+  //   if (!targetDetected) return;
+
+  //   if (localStorage.getItem('modal-key') === 'done' && (!loginModal || loginModal === 'countinue' )) {
+  //     localStorage.setItem('discount-key', 'countinue')
+  //     discountTimer = setTimeout(() => {
+  //       setCouponModal(true);
+  //     }, 800);
+  //   }
+
+  //   return () => clearTimeout(discountTimer);
+  // }, [targetDetected, loginModal]);
 
   return (
     <Suspense fallback={<p>Loading....</p>}>

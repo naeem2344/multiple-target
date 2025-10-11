@@ -66,3 +66,21 @@ body {
 .landing__page__container .landing__page__sub__container .landing__page__items p{
     text-align: center;
 }
+
+
+
+/* SINGLE VIDEO STYLES */
+.single__video__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.qrcode__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+}
