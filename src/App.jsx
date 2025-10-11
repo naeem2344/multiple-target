@@ -11,7 +11,7 @@ const App = () => {
     <Suspense fallback={<p>Loading....</p>}>
       <Routes>
         <Route index element={<><VideoPlayOnQR /></>} />
-        <Route path='/single-image' element={<><SingleVideo /></>} />
+        <Route path='/single-video' element={<><SingleVideo /></>} />
         <Route path='/multiple-target-home' element={<><Home /></>} />
         <Route path='/landing' element={<><Landing /></>} />
         <Route path="/show-content/:id" element={<ShowTarget />} />
