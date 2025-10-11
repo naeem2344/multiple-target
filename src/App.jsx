@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import Navebar from './components/Navebar';
 const Home = lazy(() => import('./page/Home'));
 const Landing = lazy(() => import('./page/Landing'));
 const ShowTarget = lazy(() => import('./page/ShowTarget'));
@@ -9,6 +10,7 @@ const SingleVideo = lazy(() => import('./page/SingleVideo'));
 const App = () => {
   return (
     <Suspense fallback={<p>Loading....</p>}>
+      <Navebar />
       <Routes>
         <Route index element={<><VideoPlayOnQR /></>} />
         <Route path='/single-video' element={<><SingleVideo /></>} />

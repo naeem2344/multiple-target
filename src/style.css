@@ -102,18 +102,7 @@ body {
     border: none;
 }
 
-/* Mobile Optimization */
-@media (max-width: 768px) {
-    .single__video__container {
-        /* height: auto; */
-        padding: 40px 10px;
-    }
 
-    .video__wrapper {
-        max-width: 100%;
-        border-radius: 12px;
-    }
-}
 
 /* Loading text style */
 .loading__text {
@@ -129,5 +118,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 90vh;
+    height: 93vh;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
+
