@@ -33,6 +33,8 @@ const ShowTarget = () => {
   useEffect(() => {
     let discountTimer;
     if (!targetDetected) return;
+    alert(targetDetected);
+    alert(localStorage.getItem('modal-key'))
 
     if (localStorage.getItem('modal-key') === 'done' && (!loginModal || loginModal === 'countinue' )) {
       localStorage.setItem('discount-key', 'countinue')
@@ -43,6 +45,7 @@ const ShowTarget = () => {
 
     return () => clearTimeout(discountTimer);
   }, [targetDetected, loginModal]);
+
 
   return (
     <Suspense fallback={<p>Loading....</p>}>
